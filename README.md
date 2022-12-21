@@ -12,7 +12,7 @@ The [autofuncs.lua](lib/autofuncs.lua) should be added in an existing project an
 ```lua
 af = require("lib.autofuncs")
 ```
-Then after requiring it, you should load the module using the load function from the module itself. Also that load function requires the path of all scripts, which the module will call later. For example, in this case the module will call all scripts from the folder "scripts".
+Then after requiring it, you should load the module using the load function from the module itself. Also that load function requires the path of all scripts, which the module will use later. For example, in this case the module will use all scripts from the folder "scripts".
 ```lua
 af.load("scripts")
 ```
