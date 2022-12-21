@@ -36,7 +36,7 @@ function autofuncs.load(autofuncs, path)
     scripts = {}
     scriptsInstances = {}
 
-    -- Next loop will select from all the files, only the ones that have the .lua extension
+    -- Next loop will select from all the files only the ones that have the .lua extension
     for i in ipairs(files) do
         ext = files[i]:match("^.+%.(.+)$")
         if ext == "lua" then
@@ -76,9 +76,18 @@ function autofuncs.draw(autofuncs)
     end
 end
 
+function autofuncs.keypressed(autofuncs, k, sc, r)
+    for i in ipairs(scriptsInstances) do
+        if scriptsInstances[i].keypressed then
+            scriptsInstances[i].keypressed(k , sc, r)
+        end
+    end
+end
+
 return
 {
     load = function(...) return autofuncs.load(autofuncs, ...) end,
     update = function(...) return autofuncs.update(autofuncs, ...) end,
     draw = function(...) return autofuncs.draw(autofuncs, ...) end,
+    keypressed = function(...) return autofuncs.keypressed(autofuncs, ...) end,
 }

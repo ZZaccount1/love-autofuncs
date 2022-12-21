@@ -1,4 +1,3 @@
-
 function love.load()
     af = require("lib.autofuncs")
     af.load("scripts")
@@ -12,7 +11,9 @@ function love.draw()
     af.draw()
 end
 
-function love.keypressed(k)
+function love.keypressed(k, sc, r)
+    af.keypressed(k,sc,r)
+
     if k == "escape" then
         love.event.quit()
     end
