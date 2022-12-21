@@ -1,3 +1,7 @@
+-- autofuncs
+-- https://gitlab.com/zz_pf/love-autofunctions
+-- MIT license
+
 -- TODO: Calling the update,draw,keypressed etc. from this script, not from main.lua
 
 local autofuncs = {}
