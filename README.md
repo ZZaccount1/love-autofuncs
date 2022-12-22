@@ -30,6 +30,26 @@ function love.keypressed(k, sc, r)
     af.keypressed(k,sc,r)
 end
 ```
+Every script from the specified folder earlier, needs to return at the end every function used.
+```lua
+--!  file: player.lua
+
+player = {}
+
+function player:update(dt)
+    -- your code
+end
+
+function player:draw()
+    -- your code
+end
+
+return
+{
+    update = function(...) return player.update(player, ...) end,
+    draw = function(...) return player.draw(player, ...) end
+}
+```
 # License
 This library is free software; you can redistribute it and/or modify it under
 the terms of the MIT license. See [LICENSE](LICENSE) for details.
