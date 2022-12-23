@@ -3,6 +3,7 @@
 -- MIT license
 
 -- TODO: Calling the update,draw,keypressed etc. from this script, not from main.lua
+-- TODO: Order system
 
 local autofuncs = {}
 
