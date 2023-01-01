@@ -16,20 +16,6 @@ Then after requiring it, you should load the module using the load function from
 ```lua
 af.load("scripts")
 ```
-The module has to be called in every single love function([love.update], [love.draw], [love.keypressed]).
-```lua
-function love.update(dt)
-    af.update(dt)
-end
-
-function love.draw()
-    af.draw()
-end
-
-function love.keypressed(k, sc, r)
-    af.keypressed(k,sc,r)
-end
-```
 Every script from the specified folder earlier, needs to return at the end every function used.
 ```lua
 --!  file: player.lua
