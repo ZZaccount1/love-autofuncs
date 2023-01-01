@@ -2,18 +2,18 @@
 -- https://gitlab.com/zz_pf/love-autofunctions
 -- MIT license
 
--- TODO: Calling the update,draw,keypressed etc. from this script, not from main.lua
 -- TODO: Order system
 
 local autofuncs = {}
 
+
 function autofuncs:load(path)
     scriptsPath = path
-
+    
     files = autofuncs.getSubFiles(scriptsPath, {})
     scripts = {}
     scriptsInstances = {}
-
+    
     -- Next loop will select from all the files only the ones that have the .lua extension
     for i in ipairs(files) do
         ext = files[i]:match("^.+%.(.+)$")
@@ -21,7 +21,7 @@ function autofuncs:load(path)
             table.insert( scripts, files[i])
         end
     end
-
+    
     -- Converting the path to the require path (eg path/to/file.lua -> path.to.file),
     -- and then requiring it
     for i in ipairs(scripts) do
@@ -29,12 +29,41 @@ function autofuncs:load(path)
         val = string.gsub(val, "/",".")
         table.insert(scriptsInstances, require(val))
     end
-
-    -- Load everything
+    
+    -- Load
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].load then
             scriptsInstances[i].load()
         end
+    end
+
+    local hook = {}
+    
+    -- Update
+    hook.update = love.update
+    love.update = function(...)
+        if hook.update then
+            hook.update(...) 
+        end
+        autofuncs:update(...)
+    end
+
+    -- Draw
+    hook.draw = love.draw
+    love.draw = function(...)
+        if hook.draw then
+            hook.draw(...)
+        end
+        autofuncs:draw(...)
+    end
+
+    -- Keypressed
+    hook.keypressed = love.keypressed
+    love.keypressed = function(...)
+        if hook.keypressed then
+            hook.keypressed(...)
+        end
+        autofuncs:keypressed(...)
     end
 end
 
@@ -81,8 +110,5 @@ end
 
 return
 {
-    load = function(...) return autofuncs:load(...) end,
-    update = function(...) return autofuncs:update(...) end,
-    draw = function(...) return autofuncs:draw(...) end,
-    keypressed = function(...) return autofuncs:keypressed(...) end,
+    load = function(...) return autofuncs:load(...) end
 }
