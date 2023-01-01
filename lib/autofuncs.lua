@@ -7,35 +7,6 @@
 
 local autofuncs = {}
 
-function pushTable(table, place, value)
-    local array = table
-
-    for i=#array,place,-1 do
-        array[i+1] = table[i]
-    end
-    
-    array[place] = value
-
-    return array
-end
-
-function getSubFiles(folder, filesTable)
-    if folder == "" then return {} end
-	local files = love.filesystem.getDirectoryItems(folder)
-	for i,v in ipairs(files) do
-		local file = folder.."/"..v
-		local info = love.filesystem.getInfo(file)
-		if info then
-			if info.type == "file" then
-                table.insert(filesTable, file)
-			elseif info.type == "directory" then
-                filesTable = getSubFiles(file, filesTable)
-			end
-		end
-	end
-	return filesTable
-end
-
 function autofuncs.load(autofuncs, path)
     scriptsPath = path
 
@@ -89,6 +60,35 @@ function autofuncs.keypressed(autofuncs, k, sc, r)
             scriptsInstances[i].keypressed(k , sc, r)
         end
     end
+end
+
+function pushTable(table, place, value)
+    local array = table
+
+    for i=#array,place,-1 do
+        array[i+1] = table[i]
+    end
+    
+    array[place] = value
+
+    return array
+end
+
+function getSubFiles(folder, filesTable)
+    if folder == "" then return {} end
+	local files = love.filesystem.getDirectoryItems(folder)
+	for i,v in ipairs(files) do
+		local file = folder.."/"..v
+		local info = love.filesystem.getInfo(file)
+		if info then
+			if info.type == "file" then
+                table.insert(filesTable, file)
+			elseif info.type == "directory" then
+                filesTable = getSubFiles(file, filesTable)
+			end
+		end
+	end
+	return filesTable
 end
 
 return
