@@ -62,18 +62,6 @@ function autofuncs:keypressed(k, sc, r)
     end
 end
 
-function autofuncs.pushTable(table, place, value)
-    local array = table
-
-    for i=#array,place,-1 do
-        array[i+1] = table[i]
-    end
-    
-    array[place] = value
-
-    return array
-end
-
 function autofuncs.getSubFiles(folder, filesTable)
     if folder == "" then return {} end
 	local files = love.filesystem.getDirectoryItems(folder)
