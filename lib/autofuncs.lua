@@ -3,6 +3,7 @@
 -- MIT license
 
 -- TODO: Order system
+-- TODO: Error, printing error if user used the library wrong, without that it love print that the error is in library
 
 local autofuncs = {}
 
