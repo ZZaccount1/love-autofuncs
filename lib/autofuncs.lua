@@ -7,7 +7,7 @@
 
 local autofuncs = {}
 
-function autofuncs.load(autofuncs, path)
+function autofuncs:load(path)
     scriptsPath = path
 
     files = getSubFiles(scriptsPath, {})
@@ -38,7 +38,7 @@ function autofuncs.load(autofuncs, path)
     end
 end
 
-function autofuncs.update(autofuncs, dt)
+function autofuncs:update(dt)
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].update then
             scriptsInstances[i].update(dt)
@@ -46,7 +46,7 @@ function autofuncs.update(autofuncs, dt)
     end
 end
 
-function autofuncs.draw(autofuncs)
+function autofuncs:draw()
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].draw then
             scriptsInstances[i].draw()
@@ -54,7 +54,7 @@ function autofuncs.draw(autofuncs)
     end
 end
 
-function autofuncs.keypressed(autofuncs, k, sc, r)
+function autofuncs:keypressed(k, sc, r)
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].keypressed then
             scriptsInstances[i].keypressed(k , sc, r)
@@ -93,8 +93,8 @@ end
 
 return
 {
-    load = function(...) return autofuncs.load(autofuncs, ...) end,
-    update = function(...) return autofuncs.update(autofuncs, ...) end,
-    draw = function(...) return autofuncs.draw(autofuncs, ...) end,
-    keypressed = function(...) return autofuncs.keypressed(autofuncs, ...) end,
+    load = function(...) return autofuncs:load(...) end,
+    update = function(...) return autofuncs:update(...) end,
+    draw = function(...) return autofuncs:draw(...) end,
+    keypressed = function(...) return autofuncs:keypressed(...) end,
 }
