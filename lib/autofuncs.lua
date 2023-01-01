@@ -10,7 +10,7 @@ local autofuncs = {}
 function autofuncs:load(path)
     scriptsPath = path
 
-    files = getSubFiles(scriptsPath, {})
+    files = autofuncs.getSubFiles(scriptsPath, {})
     scripts = {}
     scriptsInstances = {}
 
