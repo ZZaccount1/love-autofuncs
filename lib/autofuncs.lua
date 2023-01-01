@@ -62,7 +62,7 @@ function autofuncs:keypressed(k, sc, r)
     end
 end
 
-function pushTable(table, place, value)
+function autofuncs.pushTable(table, place, value)
     local array = table
 
     for i=#array,place,-1 do
@@ -74,7 +74,7 @@ function pushTable(table, place, value)
     return array
 end
 
-function getSubFiles(folder, filesTable)
+function autofuncs.getSubFiles(folder, filesTable)
     if folder == "" then return {} end
 	local files = love.filesystem.getDirectoryItems(folder)
 	for i,v in ipairs(files) do
