@@ -27,6 +27,6 @@ end
 
 return
 {
-    update = function(...) return player.update(player, ...) end,
-    draw = function(...) return player.draw(player, ...) end,
+    update = function(...) return player:update(...) end,
+    draw = function(...) return player:draw(...) end,
 }
