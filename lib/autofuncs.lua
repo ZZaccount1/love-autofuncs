@@ -7,6 +7,29 @@
 
 local autofuncs = {}
 
+local function update(dt)
+    for i in ipairs(scriptsInstances) do
+        if scriptsInstances[i].update then
+            scriptsInstances[i].update(dt)
+        end
+    end
+end
+
+local function draw()
+    for i in ipairs(scriptsInstances) do
+        if scriptsInstances[i].draw then
+            scriptsInstances[i].draw()
+        end
+    end
+end
+
+local function keypressed(k, sc, r)
+    for i in ipairs(scriptsInstances) do
+        if scriptsInstances[i].keypressed then
+            scriptsInstances[i].keypressed(k , sc, r)
+        end
+    end
+end
 
 function autofuncs:load(path)
     scriptsPath = path
@@ -46,7 +69,7 @@ function autofuncs:load(path)
         if hook.update then
             hook.update(...) 
         end
-        autofuncs:update(...)
+        update(...)
     end
 
     -- Draw
@@ -55,7 +78,7 @@ function autofuncs:load(path)
         if hook.draw then
             hook.draw(...)
         end
-        autofuncs:draw(...)
+        draw(...)
     end
 
     -- Keypressed
@@ -64,31 +87,7 @@ function autofuncs:load(path)
         if hook.keypressed then
             hook.keypressed(...)
         end
-        autofuncs:keypressed(...)
-    end
-end
-
-function autofuncs:update(dt)
-    for i in ipairs(scriptsInstances) do
-        if scriptsInstances[i].update then
-            scriptsInstances[i].update(dt)
-        end
-    end
-end
-
-function autofuncs:draw()
-    for i in ipairs(scriptsInstances) do
-        if scriptsInstances[i].draw then
-            scriptsInstances[i].draw()
-        end
-    end
-end
-
-function autofuncs:keypressed(k, sc, r)
-    for i in ipairs(scriptsInstances) do
-        if scriptsInstances[i].keypressed then
-            scriptsInstances[i].keypressed(k , sc, r)
-        end
+        keypressed(...)
     end
 end
 
