@@ -2,7 +2,6 @@
 -- https://gitlab.com/zz_pf/love-autofunctions
 -- MIT license
 
--- TODO: Order system
 -- TODO: Error, printing error if user used the library wrong, without that it love print that the error is in library
 
 local autofuncs = {}
@@ -54,6 +53,21 @@ function autofuncs:load(path)
         table.insert(scriptsInstances, require(val))
     end
     
+    -- Ordering
+    for i in ipairs(scriptsInstances) do
+        if scriptsInstances[i].order then
+            local t = scriptsInstances
+            local to = scriptsInstances[i].order
+            local from = i
+            
+            if to > #scriptsInstances then
+                to = #scriptsInstances
+            end
+
+            table.insert(t, to, table.remove(t, from))
+        end
+    end
+
     -- Load
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].load then
