@@ -101,7 +101,7 @@ function autofuncs.getSubFiles(folder, filesTable)
 			if info.type == "file" then
                 table.insert(filesTable, file)
 			elseif info.type == "directory" then
-                filesTable = getSubFiles(file, filesTable)
+                filesTable = autofuncs.getSubFiles(file, filesTable)
 			end
 		end
 	end
