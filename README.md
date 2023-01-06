@@ -40,7 +40,7 @@ return
 # ToDo
 - [x] All in one function
 - [x] Order system
-- [ ] Move library outside lib folder
+- [x] Move library outside the lib folder
 - [ ] Gitignore
 - [ ] Check compatibility with different love versions 
 - [ ] Support for other love.callbacks 
