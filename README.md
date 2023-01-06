@@ -12,7 +12,7 @@ Love 11.0+
 Currently compatible with Love 12
 
 # Usage
-The [autofuncs.lua](lib/autofuncs.lua) should be added in an existing project and required.
+The [autofuncs.lua](autofuncs.lua) should be added in an existing project and required.
 ```lua
 af = require("autofuncs")
 ```
