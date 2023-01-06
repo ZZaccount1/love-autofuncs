@@ -7,11 +7,11 @@ A small Lua module for [Love2D] that calls functions like [love.load], [love.upd
 [love.draw]: https://love2d.org/wiki/love.draw
 [love.keypressed]: https://love2d.org/wiki/love.keypressed
 
-## Compatibility
+### Compatibility
 Love 11.0+
 <br>Currently compatible with Love 12
 
-## Supported functions
+### Supported functions
 [love.load], [love.update], [love.draw], [love.keypressed].
 
 # Usage
