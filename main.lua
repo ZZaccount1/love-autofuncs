@@ -1,5 +1,5 @@
 function love.load()
-    af = require("lib.autofuncs")
+    af = require("autofuncs")
     af.load("scripts")
 end
 
