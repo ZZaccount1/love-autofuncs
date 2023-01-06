@@ -46,7 +46,7 @@ return
 - [x] Order system
 - [x] Move library outside the lib folder
 - [x] Gitignore
-- [ ] Check compatibility with different love versions 
+- [x] Check compatibility with different love versions 
 - [ ] Support for other love.callbacks 
 - [ ] Better readme
 - [ ] Error printing
