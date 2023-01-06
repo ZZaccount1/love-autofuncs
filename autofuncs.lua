@@ -1,5 +1,5 @@
 -- autofuncs
--- https://gitlab.com/zz_pf/love-autofunctions
+-- https://github.com/ZZaccount1/love-autofuncs
 -- MIT license
 
 local autofuncs = {}
