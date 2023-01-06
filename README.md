@@ -10,7 +10,7 @@ A small Lua module for [Love2D] that calls functions like [love.load], [love.upd
 # Usage
 The [autofuncs.lua](lib/autofuncs.lua) should be added in an existing project and required.
 ```lua
-af = require("lib.autofuncs")
+af = require("autofuncs")
 ```
 Then after requiring it, you should load the module using the load function from the module itself. Also that load function requires the path to the folder where are all scripts, which the module will use later. For example, in this case the module will use all scripts from the folder "scripts".
 ```lua
