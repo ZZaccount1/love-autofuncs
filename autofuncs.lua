@@ -2,8 +2,6 @@
 -- https://gitlab.com/zz_pf/love-autofunctions
 -- MIT license
 
--- TODO: Error, printing error if user used the library wrong, without that it love print that the error is in library
-
 local autofuncs = {}
 
 local function update(dt)
