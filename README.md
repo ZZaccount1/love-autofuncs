@@ -11,15 +11,21 @@ A small Lua module for [Love2D] that calls functions like [love.load], [love.upd
 Love 11.0+
 <br>Currently compatible with Love 12
 
+## Supported functions
+[love.load], [love.update], [love.draw], [love.keypressed].
+
 # Usage
+### Require
 The [autofuncs.lua](autofuncs.lua) should be added in an existing project and required.
 ```lua
 af = require("autofuncs")
 ```
+### Load
 Then after requiring it, you should load the module using the load function from the module itself. Also that load function requires the path to the folder where are all scripts, which the module will use later. For example, in this case the module will use all scripts from the folder "scripts".
 ```lua
 af.load("scripts")
 ```
+### Script
 Every script from the specified folder earlier, needs to return at the end every function used.
 ```lua
 --!  file: player.lua
@@ -40,6 +46,16 @@ return
     draw = function(...) return player.draw(player, ...) end
 }
 ```
+### Order system
+If you need to call an script before or after the other one you can use the order system.
+<br>To use that you need to return at the end of the script, along with functions the order value.
+```lua
+return
+{
+    -- your code
+    order = 1
+}
+```
 
 # ToDo
 - [x] All in one function
@@ -47,8 +63,8 @@ return
 - [x] Move library outside the lib folder
 - [x] Gitignore
 - [x] Check compatibility with different love versions 
+- [x] Better readme
 - [ ] Support for other love.callbacks 
-- [ ] Better readme
 - [ ] Error printing
 
 # License
