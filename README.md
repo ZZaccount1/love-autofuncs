@@ -36,6 +36,17 @@ return
     draw = function(...) return player.draw(player, ...) end
 }
 ```
+
+# ToDo
+- [x] All in one function
+- [x] Order system
+- [ ] Move library outside lib folder
+- [ ] Gitignore
+- [ ] Check compatibility with different love versions 
+- [ ] Support for other love.callbacks 
+- [ ] Better readme
+- [ ] Error printing
+
 # License
 This library is free software; you can redistribute it and/or modify it under
 the terms of the MIT license. See [LICENSE](LICENSE) for details.
