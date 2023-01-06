@@ -41,7 +41,7 @@ return
 - [x] All in one function
 - [x] Order system
 - [x] Move library outside the lib folder
-- [ ] Gitignore
+- [x] Gitignore
 - [ ] Check compatibility with different love versions 
 - [ ] Support for other love.callbacks 
 - [ ] Better readme
