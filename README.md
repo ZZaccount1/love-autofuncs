@@ -9,7 +9,7 @@ A small Lua module for [Love2D] that calls functions like [love.load], [love.upd
 
 ## Compatibility
 Love 11.0+
-Currently compatible with Love 12
+<br>Currently compatible with Love 12
 
 # Usage
 The [autofuncs.lua](autofuncs.lua) should be added in an existing project and required.
