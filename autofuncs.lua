@@ -4,10 +4,10 @@
 
 local autofuncs = {}
 
-local function update(dt)
+local function update(...)
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].update then
-            scriptsInstances[i].update(dt)
+            scriptsInstances[i].update(...)
         end
     end
 end
@@ -20,10 +20,10 @@ local function draw()
     end
 end
 
-local function keypressed(k, sc, r)
+local function keypressed(...)
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].keypressed then
-            scriptsInstances[i].keypressed(k , sc, r)
+            scriptsInstances[i].keypressed(...)
         end
     end
 end
