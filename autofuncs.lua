@@ -28,6 +28,14 @@ local function keypressed(...)
     end
 end
 
+local function mousepressed(...)
+    for i in ipairs(scriptsInstances) do
+        if scriptsInstances[i].mousepressed then
+            scriptsInstances[i].keypremousepressedssed(...)
+        end
+    end
+end
+
 function autofuncs:load(path)
     scriptsPath = path
     
