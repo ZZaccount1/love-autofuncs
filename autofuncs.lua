@@ -57,7 +57,12 @@ local function load(path)
     for i in ipairs(scripts) do
         local val = scripts[i]:match("(.+)%..+$")
         val = string.gsub(val, "/",".")
-        table.insert(scriptsInstances, require(val))
+        
+        reqRes = require(val)
+        
+        if reqRes ~= true and reqRes ~= nil then
+            table.insert(scriptsInstances, require(val))
+        end
     end
     
     -- Ordering
