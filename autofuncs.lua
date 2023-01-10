@@ -3,8 +3,9 @@
 -- MIT license
 
 local autofuncs = {}
+local hook = {}
 
-local function update(...)
+local function updateAll(...)
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].update then
             scriptsInstances[i].update(...)
@@ -12,7 +13,7 @@ local function update(...)
     end
 end
 
-local function draw()
+local function drawAll()
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].draw then
             scriptsInstances[i].draw()
@@ -20,7 +21,7 @@ local function draw()
     end
 end
 
-local function keypressed(...)
+local function keypressedAll(...)
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].keypressed then
             scriptsInstances[i].keypressed(...)
@@ -28,7 +29,7 @@ local function keypressed(...)
     end
 end
 
-local function mousepressed(...)
+local function mousepressedAll(...)
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].mousepressed then
             scriptsInstances[i].mousepressed(...)
@@ -36,7 +37,7 @@ local function mousepressed(...)
     end
 end
 
-function autofuncs:load(path)
+local function load(path)
     scriptsPath = path
     
     files = autofuncs.getSubFiles(scriptsPath, {})
@@ -80,8 +81,6 @@ function autofuncs:load(path)
             scriptsInstances[i].load()
         end
     end
-
-    local hook = {}
     
     -- Update
     hook.update = love.update
@@ -89,7 +88,7 @@ function autofuncs:load(path)
         if hook.update then
             hook.update(...) 
         end
-        update(...)
+        updateAll(...)
     end
 
     -- Draw
@@ -98,7 +97,7 @@ function autofuncs:load(path)
         if hook.draw then
             hook.draw(...)
         end
-        draw(...)
+        drawAll(...)
     end
 
     -- Keypressed
@@ -107,7 +106,7 @@ function autofuncs:load(path)
         if hook.keypressed then
             hook.keypressed(...)
         end
-        keypressed(...)
+        keypressedAll(...)
     end
 
     -- Mousepressed
@@ -116,7 +115,7 @@ function autofuncs:load(path)
         if hook.mousepressed then
             hook.mousepressed(...)
         end
-        mousepressed(...)
+        mousepressedAll(...)
     end
 end
 
@@ -137,7 +136,31 @@ function autofuncs.getSubFiles(folder, filesTable)
 	return filesTable
 end
 
+local function update(...)
+    love.update = hook.update
+    updateAll()
+end
+
+local function draw(...)
+    love.draw = hook.draw
+    drawAll()
+end
+
+local function keypressed(...)
+    love.keypressed = hook.keypressed
+    keypressedAll()
+end
+
+local function mousepressed(...)
+    love.mousepressed = hook.mousepressed
+    mousepressedAll()
+end
+
 return
 {
-    load = function(...) return autofuncs:load(...) end
+    load = function(...) return load(...) end,
+    update = function(...) return update(...) end,
+    draw = function(...) return draw(...) end,
+    keypressed = function(...) return keypressed(...) end,
+    mousepressed = function(...) return mousepressed(...) end
 }
