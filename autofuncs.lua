@@ -31,7 +31,7 @@ end
 local function mousepressed(...)
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].mousepressed then
-            scriptsInstances[i].keypremousepressedssed(...)
+            scriptsInstances[i].mousepressed(...)
         end
     end
 end
@@ -108,6 +108,15 @@ function autofuncs:load(path)
             hook.keypressed(...)
         end
         keypressed(...)
+    end
+
+    -- Mousepressed
+    hook.mousepressed = love.mousepressed
+    love.mousepressed = function(...)
+        if hook.mousepressed then
+            hook.mousepressed(...)
+        end
+        mousepressed(...)
     end
 end
 
