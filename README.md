@@ -58,7 +58,7 @@ return
     order = 1
 }
 ```
-
+<!--
 # ToDo
 - [x] All in one function
 - [x] Order system
@@ -66,8 +66,11 @@ return
 - [x] Gitignore
 - [x] Check compatibility with different love versions 
 - [x] Better readme
+- [ ] Empty scripts also need to "return {}" but make that it's not necessary 
+- [ ] Picking between loading automatically or by hand(for example rn i need to call draw between a couple of functions in main.lua, but the library itself calls it always at the end, so make somehow that if player needs he can call it by himself)
 - [ ] Support for other love.callbacks 
 - [ ] Error printing
+-->
 
 # License
 This library is a free software. You can redistribute it and/or modify it under the terms of the MIT license. See [LICENSE](LICENSE) for details.
