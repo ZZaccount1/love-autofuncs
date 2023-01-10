@@ -13,7 +13,8 @@ Love 11.0+
 <br>Currently compatible with Love 12
 
 ### Supported functions
-[love.load], [love.update], [love.draw], [love.keypressed].
+[love.mousepressed]: https://love2d.org/wiki/love.mousepressed
+[love.load], [love.update], [love.draw], [love.keypressed], [love.mousepressed].
 
 # Usage
 ### Require
