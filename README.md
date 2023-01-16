@@ -1,6 +1,6 @@
 # Autofuncs
 ### About
-A small Lua module for [Love2D] that calls functions like [love.load], [love.update], [love.draw] etc. that are outside main.lua, without needing to require and call the functions by hand for each script.
+A small [Lua](https://lua.org/about.html) module for [Love2D] that calls functions like [love.load], [love.update], [love.draw] etc. that are outside main.lua, without needing to require and call the functions by hand for each script.
 
 [Love2D]: http://love2d.org/
 [love.load]: https://love2d.org/wiki/love.load
