@@ -5,11 +5,11 @@
 local autofuncs = {}
 local hook = {}
 
-local function updateAll( ... )
-    for i in ipairs(scriptsInstances) do
+local function updateAll(...)
+        local dt = love.timer.getDelta()
+        for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].update then
-            print("dt69", ...)
-            scriptsInstances[i].update(...)
+            scriptsInstances[i].update(dt)
         end
     end
 end
@@ -76,7 +76,6 @@ local function load(path)
     -- Update
     hook.update = love.update
     love.update = function(...)
-        print("dt2", ...)
         if hook.update then
             hook.update(...) 
         end
@@ -129,7 +128,6 @@ function autofuncs.getSubFiles(folder, filesTable)
 end
 
 local function update(...)
-    print("dt3", ...)
     love.update = hook.update
     updateAll()
 end
