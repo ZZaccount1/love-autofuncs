@@ -1,4 +1,4 @@
-# Autofuncs
+# Autofuncs [![LOVE](https://img.shields.io/badge/L%C3%96VE-11.0-EA316E.svg)](http://love2d.org/)
 ### About
 A small [Lua](https://lua.org/about.html) module for [Love2D] that calls functions like [love.load], [love.update], [love.draw] etc. that are outside main.lua, without needing to require and call the functions by hand for each script.
 
