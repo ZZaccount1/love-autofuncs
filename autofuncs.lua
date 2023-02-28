@@ -64,21 +64,6 @@ local function load(path)
             table.insert(scriptsInstances, require(val))
         end
     end
-    
-    -- Ordering
-    for i in ipairs(scriptsInstances) do
-        if scriptsInstances[i].order then
-            local t = scriptsInstances
-            local to = scriptsInstances[i].order
-            local from = i
-            
-            if to > #scriptsInstances then
-                to = #scriptsInstances
-            end
-
-            table.insert(t, to, table.remove(t, from))
-        end
-    end
 
     -- Load
     for i in ipairs(scriptsInstances) do
