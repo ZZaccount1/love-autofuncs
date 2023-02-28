@@ -5,9 +5,10 @@
 local autofuncs = {}
 local hook = {}
 
-local function updateAll(...)
+local function updateAll( ... )
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].update then
+            print("dt69", ...)
             scriptsInstances[i].update(...)
         end
     end
@@ -59,7 +60,7 @@ local function load(path)
         val = string.gsub(val, "/",".")
         
         reqRes = require(val)
-        
+
         if reqRes ~= nil and (reqRes.include == true or reqRes.include == nil)  then
             table.insert(scriptsInstances, require(val))
         end
@@ -75,6 +76,7 @@ local function load(path)
     -- Update
     hook.update = love.update
     love.update = function(...)
+        print("dt2", ...)
         if hook.update then
             hook.update(...) 
         end
@@ -127,6 +129,7 @@ function autofuncs.getSubFiles(folder, filesTable)
 end
 
 local function update(...)
+    print("dt3", ...)
     love.update = hook.update
     updateAll()
 end

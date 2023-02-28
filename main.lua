@@ -4,7 +4,7 @@ function love.load()
 end
 
 function love.update(dt)
-    player:update(dt)
+    af:update(dt)
 end
 
 function love.keypressed(k, sc, r)
