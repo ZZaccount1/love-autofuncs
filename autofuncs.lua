@@ -59,8 +59,8 @@ local function load(path)
         val = string.gsub(val, "/",".")
         
         reqRes = require(val)
-        
-        if reqRes ~= true and reqRes ~= nil then
+
+        if reqRes == true and reqRes ~= nil and (reqRes.include == true or reqRes.include == nil)  then
             table.insert(scriptsInstances, require(val))
         end
     end

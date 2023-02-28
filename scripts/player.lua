@@ -7,6 +7,8 @@ player.speed = 1
 local rectangleSize = 10
 
 function player:update(dt)
+    print(frame)
+
     if love.keyboard.isDown("up") or love.keyboard.isDown("w") then
         player.y = player.y - player.speed
     end
@@ -29,4 +31,5 @@ return
 {
     update = function(...) return player:update(...) end,
     draw = function(...) return player:draw(...) end,
+    include = false
 }
