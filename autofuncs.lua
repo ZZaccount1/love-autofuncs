@@ -38,7 +38,7 @@ local function mousepressedAll(...)
     end
 end
 
-local function load(path)
+local function requireAll(path)
     scriptsPath = path
     
     files = autofuncs.getSubFiles(scriptsPath, {})
@@ -61,11 +61,15 @@ local function load(path)
         
         reqRes = require(val)
 
-        if reqRes ~= nil and (reqRes.include == true or reqRes.include == nil)  then
-            table.insert(scriptsInstances, require(val))
+        if reqRes ~= true and  reqRes ~= nil then
+            if reqRes.include == true or reqRes.include == nil then
+                table.insert(scriptsInstances, require(val))
+            end
         end
     end
+end
 
+local function load()
     -- Load
     for i in ipairs(scriptsInstances) do
         if scriptsInstances[i].load then
@@ -149,6 +153,7 @@ end
 
 return
 {
+    requireAll = function(...) return requireAll(...) end,
     load = function(...) return load(...) end,
     update = function(...) return update(...) end,
     draw = function(...) return draw(...) end,
