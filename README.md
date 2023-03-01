@@ -23,9 +23,10 @@ The [autofuncs.lua](autofuncs.lua) should be added in an existing project and re
 af = require("autofuncs")
 ```
 ### Load
-Then after requiring it, you should load the module using the load function from the module itself. Also that load function requires the path to the folder where are all scripts, which the module will use later.
+Then after requiring it, you should first require the lua scritps using requireAll function, then you should load the module using the load function from the module itself. Also that require function requires the path to the folder where are all scripts, which the module will use later.
 ```lua
-af.load("path/to/folder")
+af.requireAll("path/to/folder")
+af.load()
 ```
 ### Script
 Every script from the specified folder earlier, needs to return at the end every function used.
